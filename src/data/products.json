@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Milk",
+    "description": "2k / liter",
+    "price": 2000.00,
+    "image": "https://rwandamart.rw/wp-content/uploads/2021/06/InyangeWholeMilk-0001.png",
+    "category_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Sheep Milk",
+    "description": "1k / liter",
+    "price": 1000.00,
+    "image": "https://cdn.tridge.com/ontology/product_thumbnails/sheep-milk.png",
+    "category_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Agashya Juice",
+    "description": "12k / bottle",
+    "price": 12000.00,
+    "image": "https://sinarwanda.rw/wp-content/uploads/2020/06/v2-15-scaled.jpg",
+    "category_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Chocolate",
+    "description": "6k / piece",
+    "price": 6000.00,
+    "image": "https://murukali.com/cdn/shop/files/Everyday-White-Chocolate-murukali-com-7321.jpg",
+    "category_id": 4
+  },
+  {
+    "id": 5,
+    "name": "Juice",
+    "description": "2k / piece",
+    "price": 2000.00,
+    "image": "https://rwandamart.rw/wp-content/uploads/2021/06/IMG_1673.jpg",
+    "category_id": 2
+  },
+  {
+    "id": 6,
+    "name": "Chocolate",
+    "description": "1.5k / piece",
+    "price": 1500.00,
+    "image": "https://migro.co.rw/app/upload/images/5206-2022-04-10.jpeg",
+    "category_id": 4
+  },
+  {
+    "id": 7,
+    "name": "Snacks",
+    "description": "2.5k / piece",
+    "price": 2500.00,
+    "image": "https://image.made-in-china.com/202f0j00SYcoqbagCFkP/Pringles-and-Lays-Style-Potato-Chips-Snacks.webp",
+    "category_id": 3
+  }
+]

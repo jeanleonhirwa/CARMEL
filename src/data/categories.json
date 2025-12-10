@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Milk Products",
+    "icon": "🥛"
+  },
+  {
+    "id": 2,
+    "name": "Juices",
+    "icon": "🧃"
+  },
+  {
+    "id": 3,
+    "name": "Snacks",
+    "icon": "🍪"
+  },
+  {
+    "id": 4,
+    "name": "Chocolate",
+    "icon": "🍫"
+  },
+  {
+    "id": 5,
+    "name": "Biscuits",
+    "icon": "🍭"
+  },
+  {
+    "id": 6,
+    "name": "Water",
+    "icon": "💧"
+  },
+  {
+    "id": 7,
+    "name": "Beer",
+    "icon": "🍺"
+  }
+]
