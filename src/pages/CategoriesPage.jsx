@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import categoriesData from '../data/categories.json';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 import CategoryCard from '../components/CategoryCard';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
@@ -9,11 +10,20 @@ const CategoriesPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setCategories(categoriesData);
+    const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const categoriesCollection = collection(db, 'categories');
+        const categoriesSnapshot = await getDocs(categoriesCollection);
+        const categoriesList = categoriesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setCategories(categoriesList);
+      } catch (error) {
+        console.error("Error fetching categories: ", error);
+      }
       setLoading(false);
-    }, 1000);
+    };
+
+    fetchCategories();
   }, []);
 
   if (loading) {
