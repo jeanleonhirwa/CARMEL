@@ -1,7 +1,18 @@
-const { initializeApp } = require("firebase/app");
-const { getFirestore, collection, doc, setDoc } = require("firebase/firestore");
-const categories = require("../src/data/categories.json");
-const products = require("../src/data/products.json");
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const categoriesPath = path.resolve(__dirname, '../src/data/categories.json');
+const productsPath = path.resolve(__dirname, '../src/data/products.json');
+
+const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf8'));
+const products = JSON.parse(fs.readFileSync(productsPath, 'utf8'));
+
 
 // IMPORTANT:
 // 1. Make sure you have created a 'firebase.js' file in 'src' with your firebase config.
@@ -56,6 +67,7 @@ async function seedDatabase() {
   } finally {
     // Firebase doesn't have a built-in function to close the connection in the v9 SDK.
     // The script will exit automatically.
+    process.exit();
   }
 }
 
