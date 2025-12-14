@@ -44,9 +44,12 @@ async function seedDatabase() {
       await setDoc(doc(categoriesCollection, categoryId), {
         name: category.name,
         icon: category.icon,
+        description: category.description || `Explore our selection of ${category.name}`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       });
     }
-    console.log("Categories seeded successfully.");
+    console.log(`✅ ${categories.length} categories seeded successfully.`);
 
     console.log("Seeding products...");
     const productsCollection = collection(db, "products");
@@ -57,13 +60,15 @@ async function seedDatabase() {
         price: product.price,
         image: product.image,
         categoryId: product.category_id.toString(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       });
     }
-    console.log("Products seeded successfully.");
+    console.log(`✅ ${products.length} products seeded successfully.`);
 
-    console.log("Database seeding complete.");
+    console.log("🎉 Database seeding complete!");
   } catch (error) {
-    console.error("Error seeding database:", error);
+    console.error("❌ Error seeding database:", error);
   } finally {
     // Firebase doesn't have a built-in function to close the connection in the v9 SDK.
     // The script will exit automatically.

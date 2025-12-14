@@ -7,29 +7,49 @@ import ContactPage from './pages/ContactPage';
 import CategoriesPage from './pages/CategoriesPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import AdminPage from './pages/AdminPage';
 import PrivateRoute from './components/PrivateRoute';
+import AdminLayout from './components/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import ProductsManagement from './pages/admin/ProductsManagement';
+import AddEditProduct from './pages/admin/AddEditProduct';
+import CategoriesManagement from './pages/admin/CategoriesManagement';
+import AddEditCategory from './pages/admin/AddEditCategory';
+import OrdersManagement from './pages/admin/OrdersManagement';
+import SettingsPage from './pages/admin/SettingsPage';
 import './App.css';
 
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/categories" element={<CategoriesPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        {/* Public Routes */}
+        <Route path="/" element={<><Navbar /><HomePage /></>} />
+        <Route path="/products" element={<><Navbar /><ProductsPage /></>} />
+        <Route path="/contact" element={<><Navbar /><ContactPage /></>} />
+        <Route path="/categories" element={<><Navbar /><CategoriesPage /></>} />
+        <Route path="/login" element={<><Navbar /><LoginPage /></>} />
+        <Route path="/signup" element={<><Navbar /><SignUpPage /></>} />
+        
+        {/* Old Admin Route (redirects to dashboard) */}
         <Route
           path="/admin"
           element={
             <PrivateRoute>
-              <AdminPage />
+              <AdminLayout />
             </PrivateRoute>
           }
-        />
+        >
+          <Route index element={<AdminDashboard />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="products" element={<ProductsManagement />} />
+          <Route path="products/add" element={<AddEditProduct />} />
+          <Route path="products/edit/:id" element={<AddEditProduct />} />
+          <Route path="categories" element={<CategoriesManagement />} />
+          <Route path="categories/add" element={<AddEditCategory />} />
+          <Route path="categories/edit/:id" element={<AddEditCategory />} />
+          <Route path="orders" element={<OrdersManagement />} />
+          <Route path="settings" element={<SettingsPage />} />
+        </Route>
       </Routes>
     </>
   );

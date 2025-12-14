@@ -2,36 +2,43 @@
   {
     "id": 1,
     "name": "Milk Products",
-    "icon": "🥛"
+    "icon": "🥛",
+    "description": "Fresh milk and dairy products for your daily needs"
   },
   {
     "id": 2,
     "name": "Juices",
-    "icon": "🧃"
+    "icon": "🧃",
+    "description": "Refreshing fruit juices and beverages"
   },
   {
     "id": 3,
     "name": "Snacks",
-    "icon": "🍪"
+    "icon": "🍪",
+    "description": "Delicious snacks for any time of the day"
   },
   {
     "id": 4,
     "name": "Chocolate",
-    "icon": "🍫"
+    "icon": "🍫",
+    "description": "Premium chocolates and sweet treats"
   },
   {
     "id": 5,
     "name": "Biscuits",
-    "icon": "🍭"
+    "icon": "🍭",
+    "description": "Crispy biscuits and cookies for snacking"
   },
   {
     "id": 6,
     "name": "Water",
-    "icon": "💧"
+    "icon": "💧",
+    "description": "Pure bottled water to keep you hydrated"
   },
   {
     "id": 7,
     "name": "Beer",
-    "icon": "🍺"
+    "icon": "🍺",
+    "description": "Local and international beer selection"
   }
 ]
