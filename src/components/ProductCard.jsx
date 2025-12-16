@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const ProductCard = ({ product }) => {
+  const [whatsappNumber, setWhatsappNumber] = useState('+250780000000');
+
+  useEffect(() => {
+    fetchWhatsAppNumber();
+  }, []);
+
+  const fetchWhatsAppNumber = async () => {
+    try {
+      const settingsDoc = await getDoc(doc(db, 'settings', 'store'));
+      if (settingsDoc.exists() && settingsDoc.data().whatsappNumber) {
+        setWhatsappNumber(settingsDoc.data().whatsappNumber);
+      }
+    } catch (error) {
+      console.error('Error fetching WhatsApp number:', error);
+    }
+  };
+
+  const handleWhatsAppClick = () => {
+    const message = `Hi! I'm interested in *${product.name}* (${product.price} RWF). Can we discuss this product?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
       <p>{product.description}</p>
-      <a href="https://www.instagram.com/yourusername/" className="order-btn" target="_blank" rel="noopener noreferrer">
-        <i className="fab fa-instagram"></i> Follow on Instagram
-      </a>
+      <button onClick={handleWhatsAppClick} className="order-btn whatsapp-btn">
+        <i className="fab fa-whatsapp"></i> Let's Talk
+      </button>
     </div>
   );
 };

@@ -9,6 +9,7 @@ function SettingsPage() {
     storeEmail: 'carmelstore@gmail.com',
     storePhone: '+250 780 000 000',
     storeAddress: 'Kigali, Rwanda',
+    whatsappNumber: '+250780000000',
     currency: 'RWF',
     taxRate: '0',
     shippingFee: '0'
@@ -102,6 +103,21 @@ function SettingsPage() {
               onChange={handleChange}
               placeholder="+250 780 000 000"
             />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="whatsappNumber">WhatsApp Number</label>
+            <input
+              type="tel"
+              id="whatsappNumber"
+              name="whatsappNumber"
+              value={settings.whatsappNumber}
+              onChange={handleChange}
+              placeholder="+250780000000"
+            />
+            <small style={{ color: '#666', fontSize: '0.85rem', marginTop: '4px', display: 'block' }}>
+              Enter with country code (no spaces). E.g., +250780000000
+            </small>
           </div>
 
           <div className="form-group">

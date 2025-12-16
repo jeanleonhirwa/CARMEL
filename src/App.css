@@ -147,6 +147,23 @@ header {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
+/* WhatsApp Button */
+.whatsapp-btn {
+    background: #25D366 !important;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E !important; /* Darker WhatsApp Green */
+}
+
+.whatsapp-btn i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
 /* --- PRODUCTS --- */
 .products {
     display: grid;
