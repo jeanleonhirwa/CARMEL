@@ -3,19 +3,16 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Using environment variables for security
 const firebaseConfig = {
-  apiKey: "AIzaSyAa9j2SIOJhnlZ1sz5bNR_8izqhLN9f9qU",
-  authDomain: "carmel-3ef71.firebaseapp.com",
-  projectId: "carmel-3ef71",
-  storageBucket: "carmel-3ef71.firebasestorage.app",
-  messagingSenderId: "321108792560",
-  appId: "1:321108792560:web:5b3c00da8adc53d655de35",
-  measurementId: "G-RZR3XJRG3H"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyAa9j2SIOJhnlZ1sz5bNR_8izqhLN9f9qU",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "carmel-3ef71.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "carmel-3ef71",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "carmel-3ef71.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "321108792560",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:321108792560:web:5b3c00da8adc53d655de35",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-RZR3XJRG3H"
 };
 
 // Initialize Firebase
