@@ -239,25 +239,237 @@
 }
 
 @media (max-width: 768px) {
+  .admin-form-page {
+    max-width: 100%;
+  }
+
   .form-header {
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+
+  .form-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .btn-back {
+    width: 100%;
+    text-align: center;
   }
 
   .admin-form {
     padding: 20px;
+    border-radius: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 10px 14px;
+    font-size: 0.95rem;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .image-preview {
+    margin-top: 10px;
+  }
+
+  .image-preview img {
+    max-height: 180px;
+  }
+
+  .icon-picker {
+    padding: 14px;
+  }
+
+  .icon-picker p {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  .icon-options {
+    gap: 6px;
+  }
+
+  .icon-option {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
   }
 
   .form-actions {
     flex-direction: column-reverse;
+    margin-top: 24px;
+    padding-top: 20px;
+    gap: 12px;
   }
 
   .btn-secondary,
   .btn-primary {
     width: 100%;
+  }
+
+  .settings-section {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+
+  .settings-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .info-box {
+    padding: 16px;
+  }
+
+  .info-box p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .info-box ul {
+    padding-left: 18px;
+  }
+
+  .info-box li {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-header {
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+
+  .form-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .btn-back {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .admin-form {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    min-height: 80px;
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+
+  .form-row {
+    gap: 14px;
+  }
+
+  .image-preview {
+    margin-top: 8px;
+  }
+
+  .image-preview img {
+    max-height: 150px;
+  }
+
+  .icon-picker {
+    padding: 12px;
+  }
+
+  .icon-picker p {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .icon-options {
+    gap: 5px;
+  }
+
+  .icon-option {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .form-actions {
+    margin-top: 20px;
+    padding-top: 16px;
+    gap: 10px;
+  }
+
+  .btn-secondary,
+  .btn-primary {
+    padding: 11px 20px;
+    font-size: 0.95rem;
+  }
+
+  .settings-section {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+  }
+
+  .settings-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .info-box {
+    padding: 14px;
+    border-radius: 6px;
+  }
+
+  .info-box p {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  .info-box ul {
+    padding-left: 16px;
+  }
+
+  .info-box li {
+    font-size: 0.85rem;
+    margin: 4px 0;
+  }
+
+  .success-message {
+    font-size: 0.9rem;
   }
 }

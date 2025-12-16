@@ -191,3 +191,117 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
+
+@media (max-width: 768px) {
+  .dashboard-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .dashboard-header p {
+    font-size: 0.9rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-icon {
+    font-size: 2rem;
+  }
+
+  .stat-info h3 {
+    font-size: 1.6rem;
+  }
+
+  .recent-section,
+  .quick-actions {
+    padding: 20px;
+  }
+
+  .recent-section h2,
+  .quick-actions h2 {
+    font-size: 1.2rem;
+  }
+
+  .products-table {
+    font-size: 0.9rem;
+  }
+
+  .products-table th,
+  .products-table td {
+    padding: 10px 8px;
+  }
+
+  .product-thumb {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    font-size: 1.8rem;
+  }
+
+  .stat-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .stat-info p {
+    font-size: 0.85rem;
+  }
+
+  .recent-section,
+  .quick-actions {
+    padding: 16px;
+  }
+
+  .recent-section h2,
+  .quick-actions h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  /* Make table scrollable on very small screens */
+  .recent-products {
+    overflow-x: auto;
+  }
+
+  .products-table {
+    font-size: 0.85rem;
+    min-width: 400px;
+  }
+
+  .products-table th,
+  .products-table td {
+    padding: 8px 6px;
+  }
+
+  .action-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
