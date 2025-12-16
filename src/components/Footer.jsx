@@ -3,42 +3,92 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="footer-modern">
-      <div className="footer-content">
-        <div className="footer-section">
-          <h3>Carmel Mini Alimentation</h3>
-          <p>Your trusted source for quality food, drinks, and home essentials in Rwanda.</p>
-          <div className="social-links">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="social-link">
-              <i className="fab fa-facebook"></i>
+    <footer className="footer-clean">
+      <div className="footer-container">
+        
+        {/* Company Section */}
+        <div className="footer-col footer-col-about">
+          <div className="footer-logo">
+            <i className="fas fa-store"></i>
+            <span>Carmel</span>
+          </div>
+          <p className="footer-description">
+            Your trusted source for quality food, drinks, and home essentials in Rwanda.
+          </p>
+          <div className="footer-socials">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/250780000000" target="_blank" rel="noopener noreferrer" className="social-link">
+            <a href="https://wa.me/250788657845" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <i className="fab fa-whatsapp"></i>
             </a>
           </div>
         </div>
         
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          <p><Link to="/">Home</Link></p>
-          <p><Link to="/products">Products</Link></p>
-          <p><Link to="/categories">Categories</Link></p>
-          <p><Link to="/contact">Contact Us</Link></p>
+        {/* Quick Links */}
+        <div className="footer-col">
+          <h4 className="footer-title">Quick Links</h4>
+          <ul className="footer-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/products">Products</Link></li>
+            <li><Link to="/categories">Categories</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </div>
         
-        <div className="footer-section">
-          <h3>Contact Info</h3>
-          <p>📍 Kibuye, Rwanda</p>
-          <p>📞 +250 788 657 845</p>
-          <p>✉️ info@carmelmini.com</p>
+        {/* Contact Info */}
+        <div className="footer-col">
+          <h4 className="footer-title">Get in Touch</h4>
+          <ul className="footer-contact">
+            <li>
+              <i className="fas fa-map-marker-alt"></i>
+              <span>Kibuye, Rwanda</span>
+            </li>
+            <li>
+              <i className="fas fa-phone-alt"></i>
+              <a href="tel:+250788657845">+250 788 657 845</a>
+            </li>
+            <li>
+              <i className="fas fa-envelope"></i>
+              <a href="mailto:info@carmelmini.com">info@carmelmini.com</a>
+            </li>
+          </ul>
         </div>
+        
+        {/* Business Hours */}
+        <div className="footer-col">
+          <h4 className="footer-title">Business Hours</h4>
+          <ul className="footer-hours">
+            <li>
+              <span>Monday - Friday</span>
+              <span>8:00 AM - 8:00 PM</span>
+            </li>
+            <li>
+              <span>Saturday</span>
+              <span>9:00 AM - 7:00 PM</span>
+            </li>
+            <li>
+              <span>Sunday</span>
+              <span>10:00 AM - 6:00 PM</span>
+            </li>
+          </ul>
+        </div>
+        
       </div>
       
-      <div className="footer-bottom">
-        <p>© 2025 Carmel Mini Alimentation. All rights reserved.</p>
+      {/* Footer Bottom */}
+      <div className="footer-bottom-clean">
+        <div className="footer-bottom-container">
+          <p>© 2025 Carmel Mini Alimentation. All rights reserved.</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
       </div>
     </footer>
   );

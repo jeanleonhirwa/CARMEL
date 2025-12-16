@@ -289,6 +289,8 @@ header {
 }
 
 /* --- FOOTER --- */
+/* Old footer styles disabled - Using Modern.css instead */
+/*
 footer {
     background: #333;
     color: white;
@@ -310,6 +312,7 @@ footer a:hover {
     color: var(--accent);
     transform: scale(1.1);
 }
+*/
 
 /* --- FILTER BUTTONS --- */
     .filter-buttons {
@@ -451,12 +454,12 @@ footer a:hover {
 
 
 
+    /* Old footer styles disabled */
+    /*
     footer {
-
         padding: 20px;
-
         height: auto;
-
     }
+    */
 
 }
