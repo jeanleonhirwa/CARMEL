@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 import Footer from '../components/Footer';
 
 const ContactPage = () => {
@@ -7,6 +9,28 @@ const ContactPage = () => {
     email: '',
     message: ''
   });
+  
+  const [settings, setSettings] = useState({
+    storePhone: '+250 788 657 845',
+    whatsappNumber: '+250788657845',
+    storeEmail: 'info@carmelmini.com',
+    storeAddress: 'Kibuye, Rwanda'
+  });
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const settingsDoc = await getDoc(doc(db, 'settings', 'store'));
+      if (settingsDoc.exists()) {
+        setSettings(settingsDoc.data());
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,6 +41,18 @@ const ContactPage = () => {
     // Handle form submission logic here
     console.log(formData);
     alert('Message sent!');
+  };
+
+  const formatPhoneDisplay = (phone) => {
+    // Format phone number for display (add spaces for readability)
+    if (!phone) return '+250 788 657 845';
+    return phone.replace(/(\+\d{3})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4');
+  };
+
+  const formatWhatsAppLink = (phone) => {
+    // Remove all non-numeric characters except the leading +
+    if (!phone) return '250788657845';
+    return phone.replace(/[^\d+]/g, '');
   };
 
   return (
@@ -31,15 +67,20 @@ const ContactPage = () => {
           <div style={{ background: 'white', padding: '32px', borderRadius: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>📍</div>
             <h3 style={{ marginBottom: '8px', color: '#2C3E50' }}>Address</h3>
-            <p style={{ color: '#6C757D', margin: 0 }}>Kibuye, Rwanda</p>
+            <p style={{ color: '#6C757D', margin: 0 }}>{settings.storeAddress || 'Kibuye, Rwanda'}</p>
           </div>
           
           <div style={{ background: 'white', padding: '32px', borderRadius: '16px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>📞</div>
             <h3 style={{ marginBottom: '8px', color: '#2C3E50' }}>Phone/WhatsApp</h3>
             <p style={{ color: '#6C757D', margin: 0 }}>
-              <a href="https://wa.me/250788657845" style={{ color: '#25D366', textDecoration: 'none' }}>
-                +250 788 657 845
+              <a 
+                href={`https://wa.me/${formatWhatsAppLink(settings.whatsappNumber || settings.storePhone)}`} 
+                style={{ color: '#25D366', textDecoration: 'none' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {formatPhoneDisplay(settings.storePhone)}
               </a>
             </p>
           </div>
@@ -48,8 +89,8 @@ const ContactPage = () => {
             <div style={{ fontSize: '48px', marginBottom: '16px' }}>✉️</div>
             <h3 style={{ marginBottom: '8px', color: '#2C3E50' }}>Email</h3>
             <p style={{ color: '#6C757D', margin: 0 }}>
-              <a href="mailto:info@carmelmini.com" style={{ color: '#FF6B35', textDecoration: 'none' }}>
-                info@carmelmini.com
+              <a href={`mailto:${settings.storeEmail || 'info@carmelmini.com'}`} style={{ color: '#FF6B35', textDecoration: 'none' }}>
+                {settings.storeEmail || 'info@carmelmini.com'}
               </a>
             </p>
           </div>

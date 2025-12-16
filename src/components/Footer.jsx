@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Footer = () => {
+  const [settings, setSettings] = useState({
+    storePhone: '+250 788 657 845',
+    whatsappNumber: '+250788657845',
+    storeEmail: 'info@carmelmini.com',
+    storeAddress: 'Kibuye, Rwanda'
+  });
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const settingsDoc = await getDoc(doc(db, 'settings', 'store'));
+      if (settingsDoc.exists()) {
+        setSettings(settingsDoc.data());
+      }
+    } catch (error) {
+      console.error('Error fetching settings:', error);
+    }
+  };
+
+  const formatWhatsAppLink = (phone) => {
+    if (!phone) return '250788657845';
+    return phone.replace(/[^\d+]/g, '');
+  };
+
   return (
     <footer className="footer-clean">
       <div className="footer-container">
@@ -22,7 +51,7 @@ const Footer = () => {
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/250788657845" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <a href={`https://wa.me/${formatWhatsAppLink(settings.whatsappNumber || settings.storePhone)}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
               <i className="fab fa-whatsapp"></i>
             </a>
           </div>
@@ -45,15 +74,19 @@ const Footer = () => {
           <ul className="footer-contact">
             <li>
               <i className="fas fa-map-marker-alt"></i>
-              <span>Kibuye, Rwanda</span>
+              <span>{settings.storeAddress || 'Kibuye, Rwanda'}</span>
             </li>
             <li>
               <i className="fas fa-phone-alt"></i>
-              <a href="tel:+250788657845">+250 788 657 845</a>
+              <a href={`tel:${formatWhatsAppLink(settings.storePhone)}`}>
+                {settings.storePhone || '+250 788 657 845'}
+              </a>
             </li>
             <li>
               <i className="fas fa-envelope"></i>
-              <a href="mailto:info@carmelmini.com">info@carmelmini.com</a>
+              <a href={`mailto:${settings.storeEmail || 'info@carmelmini.com'}`}>
+                {settings.storeEmail || 'info@carmelmini.com'}
+              </a>
             </li>
           </ul>
         </div>
