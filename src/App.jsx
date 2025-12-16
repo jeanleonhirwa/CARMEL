@@ -17,6 +17,7 @@ import AddEditCategory from './pages/admin/AddEditCategory';
 import OrdersManagement from './pages/admin/OrdersManagement';
 import SettingsPage from './pages/admin/SettingsPage';
 import './App.css';
+import './styles/Modern.css';
 
 function App() {
   return (

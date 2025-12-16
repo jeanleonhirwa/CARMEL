@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
-import Loader from '../components/Loader';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filterCategory, setFilterCategory] = useState('all');
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
@@ -44,46 +44,73 @@ const ProductsPage = () => {
       if (category) {
         const filtered = products.filter(p => p.categoryId === category.id);
         setFilteredProducts(filtered);
+        setFilterCategory(cat.toLowerCase());
       }
     } else {
       setFilteredProducts(products);
+      setFilterCategory('all');
     }
   }, [location.search, products, categories]);
 
   const filterProducts = (categoryName) => {
     if (categoryName === 'all') {
       setFilteredProducts(products);
+      setFilterCategory('all');
     } else {
       const category = categories.find(c => c.name.toLowerCase() === categoryName.toLowerCase());
       if (category) {
         const filtered = products.filter(p => p.categoryId === category.id);
         setFilteredProducts(filtered);
+        setFilterCategory(categoryName.toLowerCase());
       }
     }
   };
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="loading-modern">
+        <div className="spinner-modern"></div>
+        <p>Loading products...</p>
+      </div>
+    );
   }
 
   return (
     <>
-      <header>
-        Our Products
-      </header>
-      <div className="filter-buttons">
-        <button onClick={() => filterProducts('all')}>All</button>
+      <div className="page-header">
+        <h1>Our Products</h1>
+        <p>Discover fresh, quality products for your everyday needs</p>
+      </div>
+      
+      <div className="filter-pills">
+        <button className={`pill-btn ${filterCategory === 'all' ? 'active' : ''}`} onClick={() => filterProducts('all')}>
+          All Products
+        </button>
         {categories.map(category => (
-          <button key={category.id} onClick={() => filterProducts(category.name)}>
-            {category.name}
+          <button 
+            key={category.id} 
+            className={`pill-btn ${filterCategory === category.name.toLowerCase() ? 'active' : ''}`}
+            onClick={() => filterProducts(category.name)}
+          >
+            {category.icon} {category.name}
           </button>
         ))}
       </div>
-      <section className="products">
-        {filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </section>
+      
+      {filteredProducts.length > 0 ? (
+        <section className="products products-grid-modern">
+          {filteredProducts.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </section>
+      ) : (
+        <div className="empty-state">
+          <div className="empty-state-icon">📦</div>
+          <h3>No products found</h3>
+          <p>Try selecting a different category</p>
+        </div>
+      )}
+      
       <Footer />
     </>
   );

@@ -28,13 +28,18 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card">
-      <img src={product.image} alt={product.name} />
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <button onClick={handleWhatsAppClick} className="order-btn whatsapp-btn">
-        <i className="fab fa-whatsapp"></i> Let's Talk
-      </button>
+    <div className="product-card product-card-modern">
+      <div className="product-image-wrapper">
+        <img src={product.image} alt={product.name} />
+      </div>
+      <div className="product-info-modern">
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <div className="product-price-modern">RWF {product.price?.toLocaleString()}</div>
+        <button onClick={handleWhatsAppClick} className="btn-modern btn-whatsapp-modern">
+          <i className="fab fa-whatsapp"></i> Let's Talk
+        </button>
+      </div>
     </div>
   );
 };

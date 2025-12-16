@@ -27,17 +27,35 @@ const CategoriesPage = () => {
   }, []);
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="loading-modern">
+        <div className="spinner-modern"></div>
+        <p>Loading categories...</p>
+      </div>
+    );
   }
 
   return (
     <>
-      <h2>Select a Product Category</h2>
-      <div className="category-container">
-        {categories.map(category => (
-          <CategoryCard key={category.id} category={category} />
-        ))}
+      <div className="page-header">
+        <h1>Product Categories</h1>
+        <p>Browse our wide selection of products by category</p>
       </div>
+      
+      {categories.length > 0 ? (
+        <div className="category-container categories-grid-modern">
+          {categories.map(category => (
+            <CategoryCard key={category.id} category={category} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">
+          <div className="empty-state-icon">🏷️</div>
+          <h3>No categories available</h3>
+          <p>Categories will appear here soon</p>
+        </div>
+      )}
+      
       <Footer />
     </>
   );
