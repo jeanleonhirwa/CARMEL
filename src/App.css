@@ -15,6 +15,8 @@ body {
 }
 
 /* --- NAV BAR --- */
+/* Old nav styles disabled - Using Modern.css instead */
+/*
 nav {
     background: white;
     padding: 15px 30px;
@@ -72,6 +74,7 @@ nav a:hover {
         display: block;
     }
 }
+*/
 
 /* --- HEADER --- */
 header {
@@ -337,55 +340,34 @@ footer a:hover {
 
 @media (max-width: 768px) {
 
+    /* Old nav styles disabled - Using Modern.css instead */
+    /*
     nav {
-
         padding: 15px 20px;
-
     }
-
-
 
     .nav-links {
-
         display: none;
-
         flex-direction: column;
-
         gap: 20px;
-
         position: absolute;
-
         top: 60px;
-
         left: 0;
-
         background: white;
-
         width: 100%;
-
         padding: 20px 0;
-
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
         text-align: center;
-
     }
-
-
 
     .nav-links.active {
-
         display: flex;
-
     }
-
-
 
     .hamburger {
-
         display: block;
-
     }
+    */
 
 
 
